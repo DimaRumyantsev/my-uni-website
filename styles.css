@@ -1,0 +1,128 @@
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  display: grid;
+  grid-template-areas:
+    "header header header"
+    "left main right"
+    "left main right"
+    "bottom bottom right";
+  grid-template-columns: 160px 1fr 200px;
+  grid-template-rows: 110px 1fr 1fr 110px;
+  gap: 0;
+  height: 100vh;
+}
+
+.header {
+  grid-area: header;
+  background: #cfe7ff;
+  position: relative;
+  border: 1px solid #000;
+}
+
+.menu {
+    display: flex;
+    list-style: none;
+     padding-left: 10px;
+     gap: 22px; 
+}
+
+.menu a {
+  text-decoration: none; /* прибрати підкреслення */
+  color: #000;           /* колір тексту */
+  font-weight: bold;
+}
+
+.left {
+  grid-area: left;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #000;
+}
+
+.main {
+  grid-area: main;
+  border: 1px solid #000;
+
+  /* робимо картинку фоном */
+  background-image: url('images/dog.png');
+  background-size: contain;     /* повністю показує картинку, не обрізає */
+  background-position: center;  /* по центру блоку */
+  background-repeat: no-repeat; /* не повторюємо */
+}
+.right {
+  grid-area: right;
+  background: #fde2c6;
+  border: 1px solid #000;
+  padding: 12px;
+}
+
+.bottom {
+  grid-area: bottom;
+  background: #cfe7ff;
+  position: relative;   /* щоб кнопка залишалася на своєму місці */
+  border: 1px solid #000;
+  padding: 12px;
+
+  display: flex;
+  flex-direction: column;   /* стовпець для тексту */
+  justify-content: center;  /* вертикальне центрування тексту */
+  align-items: flex-end;    /* прижати до правого краю */
+}
+
+.left .block2 {
+  flex: 1;
+  background: #fde2c6;
+  border-bottom: 1px solid #000;
+  padding: 10px;
+}
+
+.left .block5 {
+  flex: 1;
+  background: #e6f5e8;
+  padding: 10px;
+}
+
+.corner-btn {
+  position: absolute;
+  top: 0;
+  height: 36px;
+  border: 2px solid #111;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  margin: 0;
+}
+
+.header-btn {
+  right: 20px;               /* відступ справа */
+  top: 50%;                  /* ставимо по центру */
+  transform: translateY(-50%); /* зміщуємо щоб був рівно посередині */
+  width: 140px;
+  justify-content: flex-start; /* вирівнюємо текст по лівому краю */
+  padding-left: 8px;           /* невеликий відступ всередині */
+}
+
+.bottom-btn {
+  left: 20px;                 /* відступ зліва */
+  top: 0%;                      
+  width: 140px;
+  justify-content: flex-end;  /* текст справа */
+  padding-right: 8px;
+}
+
+h1, h2, h3, p, li {
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
