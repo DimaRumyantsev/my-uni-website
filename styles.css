@@ -1,0 +1,156 @@
+/* Скидання відступів та коректна розмітка */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  min-height: 100%;
+  font-family: Arial, sans-serif;
+}
+
+/* Сітка сторінки */
+.container {
+  display: grid;
+  grid-template-areas:
+    "header header header"
+    "left   main   right"
+    "bottom bottom right"; /* футер відразу після контенту */
+  grid-template-columns: 160px 1fr 200px;
+  grid-template-rows: 110px auto auto; /* футер росте під контент */
+  min-height: 100vh; /* сторінка займає весь екран і росте далі */
+}
+
+/* Хедер */
+.header {
+  grid-area: header;
+  background: #cfe7ff;
+  border: 1px solid #000;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Меню */
+.menu {
+  display: flex;
+  list-style: none;
+  gap: 22px;
+  padding-left: 10px;
+  margin-top: 5px;
+}
+
+.menu a {
+  text-decoration: none;
+  color: #000;
+  font-weight: bold;
+}
+
+/* Ліва колонка */
+.left {
+  grid-area: left;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #000;
+}
+
+.left .block2,
+.left .block5 {
+  flex: 1;              
+  display: flex;        
+  align-items: center;  
+  justify-content: flex-start; 
+  padding: 10px;
+  background: #fde2c6;
+  border-bottom: 1px solid #000;
+  text-align: left; 
+}
+
+.left .block5 {
+  background: #e6f5e8;
+  border-bottom: none;
+}
+
+/* Основний контент */
+.main {
+  grid-area: main;
+  border: 1px solid #000;
+  padding: 10px;
+
+  display: flex;              
+  justify-content: center;    
+  align-items: center;        
+}
+
+.main img,
+.main .main-img {
+  max-width: 100%;   
+  width: 100%;       /* розтягується до країв блока */
+  height: auto;      
+  display: block;    
+  border-radius: 8px; 
+}
+
+/* Права колонка */
+.right {
+  grid-area: right;
+  background: #fde2c6;
+  border: 1px solid #000;
+  padding: 12px;
+}
+
+/* Футер */
+.bottom {
+  grid-area: bottom;
+  background: #cfe7ff;
+  border: 1px solid #000;
+  padding: 12px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* текст росте вниз */
+  align-items: flex-end;
+  position: relative;
+}
+
+/* Кнопки у хедері/футері */
+.corner-btn {
+  position: absolute;
+  border: 2px solid #111;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  margin: 0;
+  font-weight: bold;
+  padding: 4px 8px;            /* внутрішні відступи */
+  white-space: normal;         /* дозволяє перенос рядків */
+  word-break: break-word;      /* перенос довгих слів */
+  max-width: 200px;            /* обмеження ширини */
+}
+
+/* Баланс у хедері */
+.header-btn {
+  right: 20px;
+  top: 10px;
+  width: auto;
+  justify-content: flex-start; /* вирівнювання по лівому краю */
+  text-align: left;
+}
+
+/* Dodep у футері */
+.bottom-btn {
+  left: 20px;
+  top: 0;                      /* завжди прибита до верху футера */
+  width: auto;
+  justify-content: flex-end;   /* контент по правому краю */
+  text-align: right;
+  align-items: flex-start;     /* щоб текст ріс вниз від верху */
+}
+
+/* Текст у блоках */
+p, li, h1, h2, h3 {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
